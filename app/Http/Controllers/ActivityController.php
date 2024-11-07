@@ -27,6 +27,7 @@ class ActivityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    //Valida los datos y lo a;ade a la bd
     public function store(Request $request)
     {
         $request->validate([
@@ -50,7 +51,7 @@ class ActivityController extends Controller
      */
     public function show(string $id)
     {
-        return view("activities.show");
+        return view("activities.show", ['activity' => Activity::findOrFail($id)]);
     }
 
     /**
