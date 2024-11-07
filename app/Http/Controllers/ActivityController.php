@@ -90,6 +90,11 @@ class ActivityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $activity = Activity::findOrFail($id);
+
+        $activity->delete();
+
+        return redirect()->route('activities.index')
+                         ->with('success', 'Actividad eliminada correctamente.');
+}
 }
