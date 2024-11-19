@@ -13,7 +13,7 @@
         <tr>
             @foreach(array_keys($data[0]) as $column)
                 @if ($column !== 'created_at' && $column !== 'updated_at')
-                    <th scope="col" class="px-6 py-3 text-left font-medium bg-red-500 text-white">
+                    <th scope="col" class="px-6 py-3 text-left font-medium bg-yellow-500 text-white">
                         {{ ucfirst($column) }}
                     </th>
                 @endif
@@ -25,7 +25,6 @@
         </tr>
     </thead>
     <tbody>
-        @dd($data)
         @foreach($data as $row)
         <tr class="bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700">
             @foreach($row as $key => $value)

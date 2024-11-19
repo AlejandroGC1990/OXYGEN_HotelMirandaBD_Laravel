@@ -3,19 +3,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-                    </a>
-                </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+            <a href="{{route('activities.index')}}" class=" dark:text-gray-200 px-3">Activity</a>
+
+            <a href="{{route('room.index')}}" class=" dark:text-gray-200 px-3">Room</a>
+
+            <a href="{{route('contact.index')}}" class=" dark:text-gray-200 px-3 ">Contact</a>
+
+            <a href="{{route('booking.index')}}" class=" dark:text-gray-200 px-3 ">Booking</a>
+
             </div>
 
             <!-- Settings Dropdown -->
