@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', function () {
     return view('welcome');

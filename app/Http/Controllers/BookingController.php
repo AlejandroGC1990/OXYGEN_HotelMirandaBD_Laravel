@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Mail\BookingEmail;
 use App\Models\Booking;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
 
 class BookingController extends Controller
 {
@@ -55,6 +59,14 @@ class BookingController extends Controller
             'room_id' => $request->input('room_id')
         ]);
         
+        Mail::to('hello@example.com')->send(new BookingEmail(
+            $request->input('guest'), 
+            $request->input('room_id'), 
+            $request->input('check_in'),
+            $request->input('check_out'), 
+            $request->input('discount')
+        ));
+
         return redirect(route("booking.index"))->with('success', 'Creado correctamente.');
         
     }
