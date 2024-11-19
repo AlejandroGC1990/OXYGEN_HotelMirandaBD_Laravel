@@ -8,7 +8,7 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900">
     
-<table class="min-w-full border-collapse border border-gray-200 bg-white shadow-md rounded-lg border">
+<table class="min-w-full border-collapse border-gray-200 bg-white shadow-md rounded-lg border">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             @foreach(array_keys($data[0]) as $column)
