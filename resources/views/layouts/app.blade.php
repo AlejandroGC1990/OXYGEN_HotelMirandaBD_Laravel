@@ -10,18 +10,20 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        
-        <!-- Styles -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        @include('components.navbar')
-
-        <main class="flex-1 p-4 overflow-y-auto">
-            @yield('content')
-        </main>
+        <div class=" bg-gray-100 dark:bg-gray-900">
+            @include('layouts.navigation')
+            @isset($header)
+                <header class="bg-white dark:bg-gray-800 shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
         </div>
     </body>
 </html>

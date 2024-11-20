@@ -20,6 +20,7 @@ export default {
     plugins: [
         forms,
         require('tailwindcss'),
-        require('autoprefixer')
+        require('autoprefixer'),
+        require('daisyui'),
     ],
 };
