@@ -11,7 +11,8 @@ use Stripe\Stripe;
 class StripePaymentProvider implements PaymentProvider
 {
     public function processPayment(array $data): string{
-        Stripe::setApiKey(config('services.stripe.secret'));
+        Stripe::setApiKey('sk_test_51QP4ssKi5AhGZ346pq4Obnw90HVZGqvTDlPuxY4pwVnw9TtVt45spDyP2DQ4fkCozRnNcW8uHs73PPT4DbZXo4S600xC2QE0dR');
+        // Stripe::setApiKey(config('services.stripe.secret'));
     
         $session = Session::create([
             'line_items' => [
