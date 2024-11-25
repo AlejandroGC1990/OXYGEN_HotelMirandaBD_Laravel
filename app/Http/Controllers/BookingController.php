@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Contracts\PaymentProvider;
 use App\Mail\BookingEmail;
 use App\Models\Booking;
 use App\Models\Room;
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
+    private function handlePayment(Booking $booking): string{
+        $paymentProvider = app(PaymentProvider::class);
+        $amount = 100*100;
+        $productName = 'Room Booking';
+        
+        $data = [
+            'amount' => $amount,
+            'product_name' => $productName,
+        ];
+        
+        return $paymentProvider->processPayment($data);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -47,7 +61,7 @@ class BookingController extends Controller
             "room_id" => ['required','numeric']
         ]);
         
-        Booking::create([
+        $booking = Booking::create([
             'guest' => $request->input('guest'),
             'picture' => $request->input('picture'),
             'order_date' => now(),
@@ -59,6 +73,14 @@ class BookingController extends Controller
             'room_id' => $request->input('room_id')
         ]);
         
+        try {
+            $paymentUrl = $this->handlePayment($booking);
+        } catch (\Exception $e) {
+            dd($e);
+            return redirect()->back()->with('error', 'Error al procesar el pago: ' . $e->getMessage());
+        }
+        
+
         Mail::to('hello@example.com')->send(new BookingEmail(
             $request->input('guest'), 
             $request->input('room_id'), 
