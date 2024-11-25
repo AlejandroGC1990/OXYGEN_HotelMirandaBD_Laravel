@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    @include('components.NavbarLayout')
+    @include('components.navbar.NavbarLayout')
 
     <main class="container mx-auto">
         @yield('content')

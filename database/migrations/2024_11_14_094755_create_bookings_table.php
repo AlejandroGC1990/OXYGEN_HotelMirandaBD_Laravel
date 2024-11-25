@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('check_out');
             $table->decimal('discount', 5, 2); 
             $table->text('notes')->nullable(); 
-            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');     
+            $table->foreignId('room_id')->constrained('rooms')->onUpdate('cascade')->onDelete('cascade');     
             $table->enum('status',['Booked','Pending','Refund','Cancelled']);
             $table->timestamps();
         });
